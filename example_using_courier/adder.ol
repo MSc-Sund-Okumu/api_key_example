@@ -7,13 +7,14 @@ type responsetype: int | void
 interface AddingAPI {
     RequestResponse:
         add(summands)(responsetype)
+        //Only 'add' to keep the example simple.
 }
 
 service adder {
     execution: concurrent
     inputPort IPort {
         location: "socket://localhost:8080"
-        protocol: http
+        protocol: sodep
         interfaces: AddingAPI
     }
 
