@@ -1,0 +1,81 @@
+@startuml
+object "Service" as databaseService
+object "Behaviour" as databaseBehaviour
+object "Jolie" as databaseJolie
+object "InputPort" as databaseInputPort
+databaseInputPort : location: l
+databaseInputPort : protocol: p
+
+object Interface
+object Module
+
+together {
+  object Type1
+  object Type2
+}
+object RequestResponseOperation
+RequestResponseOperation : request: type1
+RequestResponseOperation : response: type2
+
+Interface *-- RequestResponseOperation
+ Type1 <-- RequestResponseOperation
+ Type2 <-- RequestResponseOperation
+
+object "Service" as consumerService
+Module *-- consumerService
+object "Behaviour" as consumerBehaviour
+object "Jolie" as consumerJolie
+consumerService *-- consumerBehaviour
+consumerBehaviour <|-- consumerJolie
+
+object "OutputPort" as consumerOutputPort
+consumerOutputPort : location: l1
+consumerOutputPort : protocol: p1
+consumerService *-- consumerOutputPort
+consumerOutputPort o-- Interface
+
+databaseService *-- databaseBehaviour
+databaseService *-- databaseInputPort
+databaseBehaviour <|-- databaseJolie
+databaseInputPort o-- Interface
+Module *-- databaseService
+Module *-- Interface
+Module *-- Type1
+Module *-- Type2
+
+object "++Service" as cacheService
+Module *-- cacheService
+
+object "++Behaviour" as cacheBehaviour
+object "++Jolie" as cacheJolie
+
+object "++InputPort" as cacheInputPort
+cacheService "++" *-- cacheInputPort
+cacheService "++" *-- cacheBehaviour
+cacheBehaviour "++" <|-- cacheJolie
+
+cacheInputPort "++" o-- Interface
+
+object "++OutputPort" as cacheOutputPort
+cacheOutputPort : location: l
+cacheOutputPort : protocol: p
+cacheOutputPort "++" *-- cacheService
+cacheOutputPort "++" o-- Interface
+
+note top of databaseService
+  databaseService
+end note
+
+note top of consumerService
+  consumerService
+end note
+
+note top of cacheService
+  cacheService
+end note
+note top of consumerOutputPort
+  * l -> l1
+  * p -> p1
+end note
+@enduml
+
