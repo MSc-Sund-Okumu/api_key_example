@@ -1,0 +1,24 @@
+@startuml
+object "Service" as databaseService
+
+object "InputPort" as databaseInputPort
+databaseInputPort : location: l
+databaseInputPort : protocol: p
+
+object Interface
+object Module
+
+databaseService *-- databaseInputPort
+databaseInputPort o-- Interface
+Module *-- databaseService
+Module *-- Interface
+
+
+note left of databaseInputPort::"protocol: p"
+  Update the allias
+  In the protocol spec
+  Full model design TBD
+end note
+
+@enduml
+
