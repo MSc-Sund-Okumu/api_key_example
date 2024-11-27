@@ -39,4 +39,4 @@
 | Materialized View | [Model](materialized-view-model.jpg) | "Add Service", "Modify OutputPort", "Add InputPort", "Add OutputPort", "Add Behaviour" | TBD | Very Useful |
 | Merge Endpoints | TBD | "A" | TBD | Missing Model |
 | Bundle Requests | [Model](bundle-requests-model.jpg) | "Add Service", "Modify OutputPort", "Add InputPort", "Add OutputPort", "Add Behaviour" | TBD | nothing to add atm |
-| Introduce Version Identifier | TBD | TBD | TBD | TBD |
+| Introduce Version Identifier | [Model](introduce-version-identifier-model.jpg) | TBD | TBD | TBD |

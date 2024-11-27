@@ -5,13 +5,10 @@ object "InputPort" as databaseInputPort
 databaseInputPort : location: l
 databaseInputPort : protocol: p
 
-object Interface
 object Module
 
 databaseService *-- databaseInputPort
-databaseInputPort o-- Interface
 Module *-- databaseService
-Module *-- Interface
 
 
 note left of databaseInputPort::"protocol: p"
